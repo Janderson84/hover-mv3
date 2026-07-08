@@ -21,7 +21,8 @@ const PAYWALL_BLACKLIST = [
   "slashdot.org", "smh.com.au", "sun-sentinel.com", "technologyreview.com",
   "theage.com.au", "theaustralian.com.au", "theathletic.com",
   "theathletic.co.uk", "thenation.com", "thestreet.com", "thesundaytimes.co.uk",
-  "thetimes.co.uk", "towardsdatascience.com", "washingtonpost.com", "wired.com",
+  "thetimes.co.uk", "towardsdatascience.com", "verge.com",
+  "theverge.com", "vox.com", "washingtonpost.com", "wired.com",
   "wsj.com", "wsj.net"
 ];
 
