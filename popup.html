@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Hover</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+        crossorigin="anonymous">
+  <style>
+    body { width: 315px; min-height: 200px; font-size: 14px; }
+    .logo { width: 100%; text-align: center; padding: 10px 0 5px; }
+    .logo img { width: 48px; height: 48px; }
+    .desc { text-align: center; color: #666; font-size: 12px; margin-bottom: 10px; }
+    .accordion .card-header { padding: 0.5rem 0.75rem; cursor: pointer; }
+    .accordion .card-body { padding: 0.75rem; }
+    .badge-count { color: #31afb4; font-weight: bold; font-size: 18px; }
+    .metric-label { font-size: 12px; color: #666; }
+    .btn-sm { font-size: 12px; }
+    .status-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .status-label { font-weight: 500; }
+    .panel-note { font-size: 11px; color: #888; margin-top: 4px; }
+    .refresh-note { font-size: 11px; color: #999; font-style: italic; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img id="logo" src="hover_logo.jpg" alt="Hover">
+  </div>
+  <div class="desc">Bypass paywalls and block ads</div>
+
+  <div id="root">
+    <div class="accordion" id="mainAccordion">
+      <!-- Settings -->
+      <div class="card">
+        <div class="card-header" id="hSettings" data-toggle="collapse" data-target="#cSettings" aria-expanded="true">
+          <strong>Settings</strong>
+        </div>
+        <div id="cSettings" class="collapse show" data-parent="#mainAccordion">
+          <div class="card-body">
+            <div class="status-row">
+              <span class="status-label">Bypass Paywalls</span>
+              <div id="paywallToggle" class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="paywallSwitch">
+                <label class="custom-control-label" for="paywallSwitch" id="paywallLabel">Loading...</label>
+              </div>
+            </div>
+            <div id="paywallStatusText" class="panel-note">Check if this site is supported...</div>
+            <hr>
+            <div class="status-row">
+              <span class="status-label">Block Ads</span>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="adblockSwitch">
+                <label class="custom-control-label" for="adblockSwitch" id="adblockLabel">Loading...</label>
+              </div>
+            </div>
+            <div id="adblockStatusText" class="panel-note">Check if ads are being blocked...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics -->
+      <div class="card">
+        <div class="card-header" id="hMetrics" data-toggle="collapse" data-target="#cMetrics" aria-expanded="false">
+          <strong>Metrics</strong>
+        </div>
+        <div id="cMetrics" class="collapse" data-parent="#mainAccordion">
+          <div class="card-body">
+            <div class="text-center">
+              <div class="badge-count" id="blockedCount">0</div>
+              <div class="metric-label">Total Items Blocked</div>
+              <div class="panel-note">Blocking Ads and Tracking Modules</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced -->
+      <div class="card">
+        <div class="card-header" id="hAdvanced" data-toggle="collapse" data-target="#cAdvanced" aria-expanded="false">
+          <strong>Advanced</strong>
+        </div>
+        <div id="cAdvanced" class="collapse" data-parent="#mainAccordion">
+          <div class="card-body">
+            <button id="btnSMWhitelist" class="btn btn-outline-info btn-sm btn-block mb-2" disabled>
+              Change Referrer Header
+            </button>
+            <button id="btnSpoofWhitelist" class="btn btn-outline-info btn-sm btn-block mb-2" disabled>
+              Spoof Site as Crawler
+            </button>
+            <button id="btnCookieWhitelist" class="btn btn-outline-info btn-sm btn-block mb-2" disabled>
+              Block Cookies
+            </button>
+            <div class="refresh-note">Changes reload the current tab</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- More -->
+      <div class="card">
+        <div class="card-header" id="hMore" data-toggle="collapse" data-target="#cMore" aria-expanded="false">
+          <strong>More</strong>
+        </div>
+        <div id="cMore" class="collapse" data-parent="#mainAccordion">
+          <div class="card-body text-center">
+            <p class="panel-note">Something Not Working?</p>
+            <button id="btnReportBug" class="btn btn-outline-info btn-sm">Report Bug</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
