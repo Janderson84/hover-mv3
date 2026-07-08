@@ -81,13 +81,10 @@ async function setupRules() {
     'paywallSMWhitelistDict'
   ]);
   
-  // Filter out whitelisted ad domains
+  // Adblock: if ANY site is whitelisted, remove ALL ad rules (global toggle)
   const adblockWhitelist = storage.adblockWhitelistDict || {};
-  const filteredAdRules = adRules.filter(rule => {
-    // Check if any of this rule's domains are whitelisted
-    const domains = rule.condition?.requestDomains || [];
-    return !domains.some(d => d in adblockWhitelist);
-  });
+  const whitelistCount = Object.keys(adblockWhitelist).length;
+  const filteredAdRules = whitelistCount > 0 ? [] : adRules;
   
   // Build custom paywall rules from user's blacklist
   const userBlacklist = storage.paywallBlacklistDict || {};
